@@ -16,8 +16,7 @@ Including another URLconf
 """
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path
-from store.views import   main
+from django.urls import path, include
 
 from istore import settings
 
@@ -25,7 +24,7 @@ from istore import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', main),
+    path('', include('store.urls')),
 
 ]
 
