@@ -6,3 +6,4 @@ app_name = 'store'
 urlpatterns = [
     path('', main, name='home'),
 ]
+
