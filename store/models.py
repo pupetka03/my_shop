@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.validators import EmailValidator
 
 class MobileCategory(models.Model):
     name = models.CharField(max_length=255, unique=True)
@@ -43,5 +44,10 @@ class Mobile(models.Model):
         ]
         unique_together = ['id', 'slug']
 
-from django.db import models
+class EmailSubscriber(models.Model):
+    email = models.EmailField(unique=True, validators=[EmailValidator(message='Enter a valid email')])
+
+    def __str__(self):
+        return self.email
+
 
