@@ -8,5 +8,5 @@ class EmailSubscriberForm(forms.ModelForm):
 
     email = forms.EmailField(
         label='Your email address here',
-        widget=forms.EmailInput(attrs={'placeholder': 'Your email address here', 'required': True}),
+        widget=forms.EmailInput(attrs={'placeholder': 'Your email address here', 'required': True, 'size': 60}),
     )
