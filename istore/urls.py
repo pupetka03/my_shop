@@ -19,12 +19,16 @@ from django.contrib import admin
 from django.urls import path, include
 
 from istore import settings
+from account.views import RegisterUser, LoginUser
 
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('store.urls')),
+
+    path('registration/', RegisterUser.as_view(), name='registration'),
+    path('login/', LoginUser.as_view(), name='login'),
 
 ]
 

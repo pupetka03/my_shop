@@ -10,7 +10,6 @@
                 </div>
                 <div class="col-md-5 col-sm-12">
                     <form method="post" action="{% url 'store:home' %}#subscribe">
-
                         {% csrf_token %}
                         {{ form_emails.as_p }}
                         {{ form_emails.email.errors }}
