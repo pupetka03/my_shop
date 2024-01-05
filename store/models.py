@@ -49,5 +49,17 @@ class EmailSubscriber(models.Model):
 
     def __str__(self):
         return self.email
+    
+
+class Baner(models.Model):
+    title = models.CharField(max_length=255)
+    content = models.TextField()
+    image = models.ImageField(upload_to='banner_images/')
+    link = models.URLField()
+
+    def __str__(self):
+        return self.title
+
+
 
 
