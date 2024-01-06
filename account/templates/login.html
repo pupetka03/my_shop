@@ -1,7 +1,6 @@
 {% extends 'index.html' %}
-
-{% block content %}
 {% include "swiper main-swiper.html" %}
+{% block content %}
     <div class="col-lg-8 d-flex align-items-center reservation-form-bg">
         <form method="post" role="form" class="php-email-form" data-aos="fade-up" data-aos-delay="100">
             {% csrf_token %}

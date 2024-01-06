@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Mobile, MobileCategory
+from .models import Mobile, MobileCategory, Banner
 from .forms import EmailSubscriberForm
 from django.views.generic import TemplateView
 from django.contrib import messages
@@ -20,9 +20,9 @@ class IndexPage(TemplateView):
 
     def get_context_data(self, **kwargs): 
         context = super().get_context_data(**kwargs)
-        categories  = MobileCategory.objects.filter(is_visible=True)
-        context['categories'] = categories
+        context['categories'] = MobileCategory.objects.filter(is_visible=True)
         context['form_emails'] = EmailSubscriberForm
+        context['banners'] = Banner.objects.filter(is_visible=True)
         return context
     
 

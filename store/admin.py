@@ -1,10 +1,11 @@
 from django.contrib import admin
-from .models import MobileCategory, Mobile, EmailSubscriber
+from .models import MobileCategory, Mobile, EmailSubscriber, Banner
 from django.utils.safestring import mark_safe
 
 
 admin.site.register(MobileCategory)
 admin.site.register(EmailSubscriber)
+admin.site.register(Banner)
 
 @admin.register(Mobile)
 class MobileAdmin(admin.ModelAdmin):

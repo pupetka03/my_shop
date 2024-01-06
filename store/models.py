@@ -1,5 +1,9 @@
 from django.db import models
 from django.core.validators import EmailValidator
+from PIL import Image
+from django.core.exceptions import ValidationError
+from datetime import datetime
+
 
 class MobileCategory(models.Model):
     name = models.CharField(max_length=255, unique=True)
@@ -50,15 +54,32 @@ class EmailSubscriber(models.Model):
     def __str__(self):
         return self.email
     
-
-class Baner(models.Model):
-    title = models.CharField(max_length=255)
-    content = models.TextField()
-    image = models.ImageField(upload_to='banner_images/')
+class Banner(models.Model):
+    text = models.TextField()
+    photo = models.ImageField(upload_to='banner/')
+    button_text = models.CharField(max_length=20)
     link = models.URLField()
+    is_visible = models.BooleanField(default=True)
+    order = models.PositiveSmallIntegerField()
+    start_date = models.DateTimeField(blank=True, null=True)
+    end_date = models.DateTimeField(blank=True, null=True)
+    
+    def validate_image_dimensions(self, value):
+        max_width = 657  # max_width
+        max_height = 677  # max_height
+
+        with Image.open(value) as img:
+            width, height = img.size
+            if width > max_width or height > max_height:
+                raise ValidationError(f"The size of the image must be smaller than or equal to {max_width}x{max_height} pixels.")
+
+    def save(self, *args, **kwargs):
+        self.validate_image_dimensions(self.photo)
+        super().save(*args, **kwargs)
+
 
     def __str__(self):
-        return self.title
+        return f'Banner {self.id}'
 
 
 
