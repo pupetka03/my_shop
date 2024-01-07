@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'store.apps.StoreConfig',
     'main_app.apps.MainAppConfig',
     'account.apps.AccountConfig',
+    'manager.apps.ManagerConfig',
 ]   
 
 MIDDLEWARE = [

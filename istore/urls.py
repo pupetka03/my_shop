@@ -26,6 +26,7 @@ from account.views import RegisterUser, LoginUser, logout_user
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('store.urls')),
+    path('manager/', include('manager.urls')),
 
     path('registration/', RegisterUser.as_view(), name='registration'),
     path('login/', LoginUser.as_view(), name='login'),
