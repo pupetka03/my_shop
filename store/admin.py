@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.db import models
 from django.forms import Textarea 
-from .models import MobileCategory, Mobile, EmailSubscriber, Banner
+from .models import MobileCategory, Mobile, EmailSubscriber, Banner, BannerPromo
 from django.utils.safestring import mark_safe
 
 
@@ -29,11 +29,20 @@ class BannerAdmin(admin.ModelAdmin):
     search_fields = ('text',)
     list_filter = ("is_visible", "order", "start_date", "end_date")
     
-    # Додайте атрибути класу для налаштування вигляду полів
     formfield_overrides = {
         models.TextField: {'widget': Textarea(attrs={'rows': 4, 'cols': 40})},
     }
 
 
+@admin.register(BannerPromo)
+class BannerAdmin(admin.ModelAdmin):
+    list_display = ("id", "text", "button_text", "link", "is_visible", "order", "photo")
+    list_editable = ("text", "button_text", "link", "is_visible", "order", "photo")
+    search_fields = ('text',)
+    list_filter = ("is_visible", "order",)
     
-    
+    formfield_overrides = {
+        models.TextField: {'widget': Textarea(attrs={'rows': 4, 'cols': 40})},
+    }
+
+

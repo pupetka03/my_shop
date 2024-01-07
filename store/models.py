@@ -80,6 +80,33 @@ class Banner(models.Model):
 
     def __str__(self):
         return f'Banner {self.text}'
+     
+class BannerPromo(models.Model):
+    text = models.TextField()
+    small_text = models.TextField()
+    photo = models.ImageField(upload_to='bannerpromo/')
+    button_text = models.CharField(max_length=20)
+    link = models.URLField()
+    is_visible = models.BooleanField(default=True)
+    order = models.PositiveSmallIntegerField()
+
+    
+    def validate_image_dimensions(self, value):
+        max_width = 780  # max_width
+        max_height = 654  # max_height
+
+        with Image.open(value) as img:
+            width, height = img.size
+            if width > max_width or height > max_height:
+                raise ValidationError(f"The size of the image must be smaller than or equal to {max_width}x{max_height} pixels.")
+
+    def save(self, *args, **kwargs):
+        self.validate_image_dimensions(self.photo)
+        super().save(*args, **kwargs)
+
+
+    def __str__(self):
+        return f'BannerPromo {self.text}'
     
 
 
