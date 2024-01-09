@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy, reverse
 from django.views.generic import CreateView
 from django.contrib.auth.views import LoginView
@@ -7,7 +7,7 @@ from .forms import UserRegistrationForm, UserLoginForm
 
 def logout_user(request):
     logout(request)
-    return reverse('store:home')
+    return redirect('store:home')
 
 # User Regastrations
 class RegisterUser(CreateView):
