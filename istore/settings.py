@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'main_app.apps.MainAppConfig',
     'account.apps.AccountConfig',
     'manager.apps.ManagerConfig',
-]   
+    'products.apps.ProductsConfig',
+]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
