@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'account.apps.AccountConfig',
     'manager.apps.ManagerConfig',
     'products_mobile.apps.ProductsMobileConfig',
+    'products_watch.apps.ProductsWatchConfig',
+    
 ]
 
 MIDDLEWARE = [

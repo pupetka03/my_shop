@@ -33,6 +33,8 @@ urlpatterns = [
     path('logout/', logout_user, name='logout'),
 
     path('products_mobile/', include('products_mobile.urls')),
+    path('products_watch/', include('products_watch.urls')),
+
     
 ]
 

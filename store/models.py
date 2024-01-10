@@ -48,6 +48,55 @@ class Mobile(models.Model):
         ]
         unique_together = ['id', 'slug']
 
+
+
+
+class WatchCategory(models.Model):
+    name = models.CharField(max_length=255, unique=True)
+    order = models.PositiveIntegerField()
+    is_visible = models.BooleanField(default=True)
+
+    class Meta:
+        verbose_name_plural = 'WatchCategory'
+        ordering = ('order',)
+
+    def __iter__(self):
+        watches = self.watches.filter(is_visible=True)
+        for watch in watches:
+            yield watch
+
+
+
+    def __str__(self):
+        return f'{self.name}'
+
+
+class AppleWatch(models.Model):
+    name = models.CharField(max_length=255, unique=True)
+    slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name='url')
+    description = models.TextField(blank=True)
+    color = models.CharField(max_length=50, help_text="Enter the color of the Apple Watch (e.g., Black, White, Blue, etc.)")
+    size = models.CharField(max_length=10, help_text="Enter the size of the Apple Watch (e.g., 42mm, 38mm, etc.)")
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+    photo = models.ImageField(upload_to='applewatch/', blank=True)
+    is_visible = models.BooleanField(default=True)
+    order = models.PositiveSmallIntegerField()
+
+    category = models.ForeignKey(WatchCategory, on_delete=models.PROTECT, related_name ='applewatches') 
+
+
+    def __str__(self):
+        return f'{self.name}' 
+    
+    
+    class Meta:
+        verbose_name_plural = 'Watches'
+        ordering = ('order',)
+        constraints  = [
+            models.UniqueConstraint(fields=['order', 'category'], name='unique_order_applewatch')
+        ]
+        unique_together = ['id', 'slug']
+
 class EmailSubscriber(models.Model):
     email = models.EmailField(unique=True, validators=[EmailValidator(message='Enter a valid email')])
 

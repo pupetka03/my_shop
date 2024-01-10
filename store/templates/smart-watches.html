@@ -1,43 +1,41 @@
+{% for watch_category in watch_categories %}
 <section id="smart-watches" class="product-store padding-large position-relative" >
   <div class="container">
     <div class="row">
       <div class="display-header d-flex justify-content-between pb-3">
-        <h2 class="display-7 text-dark text-uppercase">Smart Watches</h2>
+        <h2 class="display-7 text-dark text-uppercase">{{watch_category.name}}</h2>
         <div class="btn-right">
-          <a href="shop.html" class="btn btn-medium btn-normal text-uppercase">Go to Shop</a>
+          <a href="/products_mobile/" class="btn btn-medium btn-normal text-uppercase">Go to Shop</a>
         </div>
       </div>
       <div class="swiper product-watch-swiper">
         <div class="swiper-wrapper">
-          {% for category in categories %}
-            {% if category.name == "Smart Watches" %}
-              {% for mobile in category.mobiles.all %}
-                {% if mobile.is_visible %}
+              {% for apple_watch in watch_category.applewatches.all %}
+                {% if apple_watch.is_visible %}
                   <div class="swiper-slide">
                     <div class="product-card position-relative">
                       <div class="image-holder">
-                        <img src="{{ mobile.photo.url }}" alt="{{ mobile.name }}" class="img-fluid">
+                        <img src="{{ apple_watch.photo.url }}" alt="{{ apple_watch.name }}" class="img-fluid">
                       </div>
                       <div class="cart-concern position-absolute">
                         <div class="cart-button d-flex">
-                          <a href="#" class="btn btn-medium btn-black">Add to Cart<svg class="cart-outline"><use xlink:href="#cart-outline"></use></svg></a>
+                          <a href="{{ apple_watch.slug}}" class="btn btn-medium btn-black">Add to Cart<svg class="cart-outline"><use xlink:href="#cart-outline"></use></svg></a>
                         </div>
                       </div>
                       <div class="card-detail d-flex justify-content-between align-items-baseline pt-3">
                         <h3 class="card-title text-uppercase">
-                          <a href="#">{{ mobile.name }}</a>
+                          <a href="#">{{ apple_watch.name }}</a>
                         </h3>
-                        <span class="item-price text-primary">${{ mobile.price }}</span>
+                        <span class="item-price text-primary">${{ apple_watch.price }}</span>
                       </div>
                     </div>
                   </div>
                 {% endif %}
               {% endfor %}
-            {% endif %}
-          {% endfor %}
         </div>
       </div>
     </div>
   </div>
   <div class="swiper-pagination position-absolute text-center"></div>
 </section>
+{% endfor %}
