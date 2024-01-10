@@ -32,7 +32,7 @@ urlpatterns = [
     path('login/', LoginUser.as_view(), name='login'),
     path('logout/', logout_user, name='logout'),
 
-    path('products/', include('products.urls')),
+    path('products_mobile/', include('products_mobile.urls')),
     
 ]
 
