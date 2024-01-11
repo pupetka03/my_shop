@@ -15,12 +15,10 @@ class MainMenuItems(models.Model):
         if self.is_anchor:
             return reverse('store:home') + f'#{self.slug}'
         
-        return self.slug
-        
+        return f'/{self.slug}/'
 
     def __str__(self):
         return f'{self.title}/{self.slug}'
-
 
     class Meta:
         ordering = ('order',)
