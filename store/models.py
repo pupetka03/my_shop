@@ -29,7 +29,7 @@ class Mobile(models.Model):
     slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name='url')
     description = models.TextField(blank=True)
     price = models.DecimalField(max_digits=10, decimal_places=2)
-    photo = models.ImageField(upload_to='mobile/', blank=True)
+    photo = models.ImageField(upload_to='mobile/', blank=True, help_text= ("Enter the size (1200x1200)"))
     is_visible = models.BooleanField(default=True)
     order = models.PositiveSmallIntegerField()
 
@@ -78,8 +78,8 @@ class AppleWatch(models.Model):
     color = models.CharField(max_length=50, help_text="Enter the color of the Apple Watch (e.g., Black, White, Blue, etc.)")
     size = models.CharField(max_length=10, help_text="Enter the size of the Apple Watch (e.g., 42mm, 38mm, etc.)")
     price = models.DecimalField(max_digits=10, decimal_places=2)
-    photo = models.ImageField(upload_to='applewatch/', blank=True)
-    is_visible = models.BooleanField(default=True)
+    photo = models.ImageField(upload_to='applewatch/', blank=True, help_text= ("Enter the size (1200x1200)"))
+    is_visible = models.BooleanField(default=True) 
     order = models.PositiveSmallIntegerField()
 
     category = models.ForeignKey(WatchCategory, on_delete=models.PROTECT, related_name ='applewatches') 
