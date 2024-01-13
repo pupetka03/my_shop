@@ -1,7 +1,7 @@
 from django.urls import path, include
-from .views import order
+from .views import order_mobile, order_watch
 
 urlpatterns = [
-    path('<slug:mobile_name>/', order, name='order'),
-
+    path('iphone/<slug:mobile_name>/', order_mobile, name='order_mobile'),
+    path('watch/<slug:watch_name>/', order_watch, name='order_watch'),
 ]

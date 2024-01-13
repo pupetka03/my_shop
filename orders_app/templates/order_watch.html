@@ -1,0 +1,25 @@
+{% extends 'index.html' %}
+{% block content %}
+
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{{ watch.name }} Details</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="image-holder">
+                <h1>{{ watch.name }} Details</h1>
+                <img src="{{ watch.photo.url }}" alt="{{ watch.name }}" class="img-fluid" width="300" height="200">
+                <div class="details">
+                    <p>Description: {{ watch.description }}</p>
+                    <p>Price: ${{ watch.price }}</p>
+                    <a href="/#home" class="buy-button">Buy Now</a>
+                </div>
+            </div>
+        </div>
+    </body>
+    
+{% endblock %}
+
