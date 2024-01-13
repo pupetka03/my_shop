@@ -1,0 +1,24 @@
+{% extends 'index.html' %}
+{% block content %}
+
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{{ mobile.name }} Details</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="image-holder">
+                <h1>{{ mobile.name }} Details</h1>
+                <img src="{{ mobile.photo.url }}" alt="{{ mobile.name }}" class="img-fluid" width="300" height="200">
+                <div class="details">
+                    <p>Description: {{ mobile.description }}</p>
+                    <p>Price: ${{ mobile.price }}</p>
+                    <a href="/#home" class="buy-button">Buy Now</a>
+                </div>
+            </div>
+        </div>
+    </body>
+    
+{% endblock %}

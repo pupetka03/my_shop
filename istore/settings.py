@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'manager.apps.ManagerConfig',
     'products_mobile.apps.ProductsMobileConfig',
     'products_watch.apps.ProductsWatchConfig',
+    'orders_app.apps.OrdersAppConfig',
     
 ]
 

@@ -35,7 +35,9 @@ urlpatterns = [
     path('products_mobile/', include('products_mobile.urls')),
     path('products_watch/', include('products_watch.urls')),
 
-    
+    path('', include('orders_app.urls')),
+
+
 ]
 
 if settings.DEBUG:
