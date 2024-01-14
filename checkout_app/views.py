@@ -2,6 +2,7 @@ from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse, HttpResponse
 from .models import CartItem, Mobile, AppleWatch
+from django.urls import reverse
 
 @login_required
 def add_to_cart(request):
@@ -24,14 +25,11 @@ def add_to_cart(request):
             cart_item.total_price = cart_item.quantity * (cart_item.mobile_product.price if cart_item.mobile_product else cart_item.watch_product.price)
             cart_item.save()
 
-        # Оновлення URL для редіректу на поточну сторінку
         redirect_url = request.META.get('HTTP_REFERER', '/')
         return redirect(redirect_url)
 
     else:
-        # Відповідь на GET-запит або невдалий POST-запит
-        return HttpResponse('Invalid request method or failed to add to cart', status=400)
-
+        return redirect(reverse('registration:register'))
 
 
 

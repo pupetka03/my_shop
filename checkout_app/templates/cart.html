@@ -1,7 +1,11 @@
 {% extends 'index.html' %}
 
 {% block content %}
+{% load static %}
   {% include "company-services.html" %}
+  <head>
+    <link href={% static "assets/css/style.css" %} rel="stylesheet">
+
   <div class="cart-container">
     <h2>Your Cart</h2>
     
@@ -29,9 +33,9 @@
             </div>
             <div class="product-photo">
               {% if item.mobile_product %}
-                <img src="{{ item.mobile_product.photo.url }}" alt="{{ item.mobile_product.name }}" class="img-fluid" width="50" height="50">
+                <img src="{{ item.mobile_product.photo.url }}" alt="{{ item.mobile_product.name }}" class="img-fluid" width="300" height="200">
               {% elif item.watch_product %}
-                <img src="{{ item.watch_product.photo.url }}" alt="{{ item.watch_product.name }}" class="img-fluid" width="50" height="50">
+                <img src="{{ item.watch_product.photo.url }}" alt="{{ item.watch_product.name }}" class="img-fluid" width="300" height="200">
               {% endif %}
             </div>
           </div>
@@ -44,5 +48,6 @@
     {% else %}
       <p>Your cart is empty.</p>
     {% endif %}
+  </head>
   </div>
 {% endblock %}
