@@ -36,7 +36,7 @@ urlpatterns = [
     path('products_watch/', include('products_watch.urls')),
 
     path('', include('orders_app.urls')),
-    path('checkout_app/', include('checkout_app.urls')),
+    path('', include('checkout_app.urls')),
 
 
 ]

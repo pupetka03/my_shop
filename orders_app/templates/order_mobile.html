@@ -15,7 +15,12 @@
                 <div class="details">
                     <p>Description: {{ mobile.description }}</p>
                     <p>Price: ${{ mobile.price }}</p>
-                    <a href="/#home" class="buy-button">Buy Now</a>
+                    <form method="post" action="{% url 'add_to_cart' %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="product_id" value="{{ mobile.id }}">
+                        <input type="hidden" name="product_type" value="mobile">
+                        <button type="submit" class="buy-button">Buy Now</button>
+                    </form>
                 </div>
             </div>
         </div>

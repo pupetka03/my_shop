@@ -1,0 +1,48 @@
+{% extends 'index.html' %}
+
+{% block content %}
+  {% include "company-services.html" %}
+  <div class="cart-container">
+    <h2>Your Cart</h2>
+    
+    {% if cart_items %}
+      <div class="cart-items">
+        {% for item in cart_items %}
+          <div class="cart-item">
+            <div class="product-info">
+              <span class="product-name">
+                {% if item.mobile_product %}
+                  {{ item.mobile_product.name }}
+                {% elif item.watch_product %}
+                  {{ item.watch_product.name }}
+                {% endif %}
+              </span>
+              <span class="quantity">Quantity: {{ item.quantity }}</span>
+              <span class="price">
+                Price: ${{ item.mobile_product.price|default:"0.00" }}{% if not item.mobile_product %}{{ item.watch_product.price|default:"0.00" }}{% endif %}
+              </span>
+            
+              <span class="total">Total: ${{ item.total_price|default_if_none:"0.00" }}</span>
+            </div>
+            <div class="actions">
+              <a href="{% url 'remove_from_cart' item.id %}" class="remove-button">Remove</a>
+            </div>
+            <div class="product-photo">
+              {% if item.mobile_product %}
+                <img src="{{ item.mobile_product.photo.url }}" alt="{{ item.mobile_product.name }}" class="img-fluid" width="50" height="50">
+              {% elif item.watch_product %}
+                <img src="{{ item.watch_product.photo.url }}" alt="{{ item.watch_product.name }}" class="img-fluid" width="50" height="50">
+              {% endif %}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      
+      <p class="total-price">Total Price: ${{ cart_total_price }}</p>
+      
+      <a href="{}" class="checkout-button">Proceed to Checkout</a>
+    {% else %}
+      <p>Your cart is empty.</p>
+    {% endif %}
+  </div>
+{% endblock %}
