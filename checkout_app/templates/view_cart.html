@@ -1,0 +1,15 @@
+{% extends 'index.html' %}
+
+{% block content %}
+  <h2>Your Cart</h2>
+  {% for item in cart.cartitem_set.all %}
+    <div>
+      <img src="{{ item.get_image }}" alt="{{ item.content_object }}">
+      <h3>{{ item.content_object }}</h3>
+      <p>Quantity: {{ item.quantity }}</p>
+      <p>Price: ${{ item.price }}</p>
+      <p>Subtotal: ${{ item.subtotal }}</p>
+    </div>
+  {% endfor %}
+  <p>Total: ${{ cart.total }}</p>
+{% endblock %}
