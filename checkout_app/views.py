@@ -3,6 +3,9 @@ from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse, HttpResponse
 from .models import CartItem, Mobile, AppleWatch
 from django.urls import reverse
+from .forms import CheckoutForm
+
+
 
 @login_required
 def add_to_cart(request):
@@ -33,7 +36,7 @@ def add_to_cart(request):
 
 
 
-
+@login_required
 def view_cart(request):
     cart_items = CartItem.objects.filter(user=request.user)
     cart_total_price = sum(item.quantity * (item.mobile_product.price if item.mobile_product else item.watch_product.price) for item in cart_items)
@@ -52,3 +55,20 @@ def remove_from_cart(request, cart_item_id):
     cart_item = get_object_or_404(CartItem, id=cart_item_id, user=request.user)
     cart_item.delete()
     return redirect('view_cart')
+
+
+
+def checkout_view(request):
+    cart_items = CartItem.objects.filter(user=request.user)
+    cart_total_price = sum(item.quantity * (item.mobile_product.price if item.mobile_product else item.watch_product.price) for item in cart_items)
+
+    form = CheckoutForm()
+
+    context = {
+        'cart_items': cart_items,
+        'cart_total_price': cart_total_price,
+    'form': form,
+}
+
+
+    return render(request, 'checkout.html', context)

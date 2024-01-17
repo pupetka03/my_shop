@@ -1,0 +1,46 @@
+{% extends 'index.html' %}
+{% block content %}
+
+<main id="main" style="padding-top: 100px;">
+</main>
+
+<h2>Checkout</h2>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Place Order</button>
+</form>
+
+<h3>Order Summary</h3>
+
+
+{% if cart_items %}
+  <ul>
+    {% for item in cart_items %}
+      <li>
+        {% with product_name=item.mobile_product.name %}
+          {% if not product_name %}
+            {% with product_name=item.watch_product.name %}
+              <p>Name: {{ product_name }}</p>
+            {% endwith %}
+          {% else %}
+            <p>Name: {{ product_name }}</p>
+          {% endif %}
+        {% endwith %}
+        <p>Quantity: {{ item.quantity }}</p>
+        {% if item.mobile_product %}
+          <img src="{{ item.mobile_product.photo.url }}" alt="{{ item.mobile_product.name }}" class="img-fluid" width="100" height="100">
+        {% elif item.watch_product %}
+          <img src="{{ item.watch_product.photo.url }}" alt="{{ item.watch_product.name }}" class="img-fluid" width="100" height="100">
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>No items in the cart.</p>
+{% endif %}
+
+<p>Total Price: ${{ cart_total_price }}</p>
+
+{% endblock %}

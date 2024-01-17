@@ -45,7 +45,7 @@
       
       <p class="total-price">Total Price: ${{ cart_total_price }}</p>
       
-      <a href="{}" class="checkout-button">Proceed to Checkout</a>
+      <a href="{% url 'checkout' %}" class="checkout-button">Proceed to Checkout</a>
     {% else %}
       <p>Your cart is empty.</p>
     {% endif %}
