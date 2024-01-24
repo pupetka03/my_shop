@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from store.models import Mobile, AppleWatch
+import uuid
 
 class CartItem(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -12,3 +13,21 @@ class CartItem(models.Model):
 
     def get_product_name(self):
         return self.mobile_product.name if self.mobile_product else self.watch_product.name
+    
+
+
+
+class Purchased(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
+    email = models.EmailField()
+    address = models.TextField()
+    city = models.CharField(max_length=100)
+    country = models.CharField(max_length=100)
+    zip_code = models.CharField(max_length=10)
+    telephone = models.CharField(max_length=15)
+    processed = models.BooleanField(default=False)
+    order_code = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
+    products = models.TextField()
+

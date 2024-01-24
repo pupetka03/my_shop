@@ -1,9 +1,10 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse, HttpResponse
-from .models import CartItem, Mobile, AppleWatch
+from .models import CartItem, Mobile, AppleWatch, Purchased
 from django.urls import reverse
 from .forms import CheckoutForm
+
 
 
 
@@ -58,17 +59,31 @@ def remove_from_cart(request, cart_item_id):
 
 
 
+@login_required
 def checkout_view(request):
     cart_items = CartItem.objects.filter(user=request.user)
     cart_total_price = sum(item.quantity * (item.mobile_product.price if item.mobile_product else item.watch_product.price) for item in cart_items)
 
-    form = CheckoutForm()
+    if request.method == 'POST':
+        form = CheckoutForm(request.POST)
+        if form.is_valid():
+            purchased_order = form.save(commit=False)
+            purchased_order.user = request.user
+            purchased_order.products = ', '.join([f"{item.mobile_product.name} x{item.quantity}" if item.mobile_product else f"{item.watch_product.name} x{item.quantity}" for item in cart_items])
+            purchased_order.total_price = cart_total_price
+            purchased_order.save()
+
+            cart_items.delete()
+            
+            return redirect('/products_mobile/')
+    else:
+        form = CheckoutForm()
+
 
     context = {
         'cart_items': cart_items,
         'cart_total_price': cart_total_price,
-    'form': form,
-}
-
+        'form': form,
+    }
 
     return render(request, 'checkout.html', context)

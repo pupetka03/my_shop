@@ -9,9 +9,9 @@
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Place Order</button>
+  <button type="submit">Place Order</button>
 </form>
-
+a
 <h3>Order Summary</h3>
 
 
@@ -42,5 +42,6 @@
 {% endif %}
 
 <p>Total Price: ${{ cart_total_price }}</p>
+
 
 {% endblock %}
