@@ -1,14 +1,38 @@
 {% extends 'index.html' %}
 
 {% block content %}
-    <div class="container mt-5">
-        <h1>Список резервацій</h1>
-        <div class="list-group mt-4">
-            {% for order in orders %}
-                <div class="list-group-item">
-                    <p class="mb-1">Придбані товари: {{ order.products }}</p>
-                </div>
-            {% endfor %}
+<main id="main" style="padding-top: 100px;">
+</main>
+
+<h1>Список резервацій</h1>
+<div class="list-group mt-4">
+    {% for order in orders %}
+        <div class="list-group-item">
+            <p class="mb-1">Ім'я: {{ order.first_name }}</p>
+            <p class="mb-1">Прізвище: {{ order.last_name }}</p>
+            <p class="mb-1">Електронна пошта: {{ order.email }}</p>
+            <p class="mb-1">Адреса: {{ order.address }}</p>
+            <p class="mb-1">Місто: {{ order.city }}</p>
+            <p class="mb-1">Країна: {{ order.country }}</p>
+            <p class="mb-1">Індекс: {{ order.zip_code }}</p>
+            <p class="mb-1">Телефон: {{ order.telephone }}</p>
+            <p class="mb-1">Оброблено: {{ order.processed }}</p>
+            <p class="mb-1">Код замовлення: {{ order.order_code }}</p>
+            <p class="mb-1">Придбані товари: {{ order.products }}</p>
+
+            <form method="post" action="{% url 'manager:edit_checkout' pk=order.id %}">
+                {% csrf_token %}
+                <input type="hidden" name="order_id" value="{{ order.id }}">
+                {% if not order.processed %}
+                    <button type="submit" class="btn btn-success">Обробити</button>
+                {% else %}
+                    <span class="text-success">Замовлення оброблено</span>
+                {% endif %}
+            </form>
+            
+
+
         </div>
-    </div>
+    {% endfor %}
+</div>
 {% endblock %}

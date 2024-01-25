@@ -30,4 +30,5 @@ class Purchased(models.Model):
     processed = models.BooleanField(default=False)
     order_code = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
     products = models.TextField()
+    
 
