@@ -1,0 +1,15 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<main id="main" style="padding-top: 100px;">
+</main>
+
+<h1>Список підтверджених замовлень</h1>
+<div class="list-group mt-4">
+    {% for order in confirmed_orders %}
+        <div class="list-group-item">
+            <p class="mb-1">Ім'я: {{ order.user }}</p>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

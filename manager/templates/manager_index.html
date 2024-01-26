@@ -8,6 +8,7 @@
 <div class="list-group mt-4">
     {% for order in orders %}
         <div class="list-group-item">
+            <p class="mb-1">Ім'я: {{ order.user }}</p>
             <p class="mb-1">Ім'я: {{ order.first_name }}</p>
             <p class="mb-1">Прізвище: {{ order.last_name }}</p>
             <p class="mb-1">Електронна пошта: {{ order.email }}</p>
@@ -16,9 +17,9 @@
             <p class="mb-1">Країна: {{ order.country }}</p>
             <p class="mb-1">Індекс: {{ order.zip_code }}</p>
             <p class="mb-1">Телефон: {{ order.telephone }}</p>
-            <p class="mb-1">Оброблено: {{ order.processed }}</p>
             <p class="mb-1">Код замовлення: {{ order.order_code }}</p>
             <p class="mb-1">Придбані товари: {{ order.products }}</p>
+            <p class="mb-1">Оброблено: {{ order.processed }}</p>
 
             <form method="post" action="{% url 'manager:edit_checkout' pk=order.id %}">
                 {% csrf_token %}

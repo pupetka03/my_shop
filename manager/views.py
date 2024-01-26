@@ -2,7 +2,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import ListView, UpdateView, FormView
 from store.models import Mobile
 from checkout_app.models import Purchased
-from checkout_app.views import CheckoutForm
+from manager.forms import CheckoutManagerForm
 from django.shortcuts import render
 from checkout_app.models import Purchased
 from checkout_app.views import CartItem
@@ -27,18 +27,15 @@ class ManagerIndex(LoginRequiredMixin, ManagerAccessMixin, ListView):
         return context
     
 
-class EditCheckout(LoginRequiredMixin, ManagerAccessMixin, FormView):
+class EditCheckout(LoginRequiredMixin, ManagerAccessMixin, UpdateView):
     template_name = 'edit_checkouts.html'
     login_url = '/login/'
-    form_class = CheckoutForm
+    form_class = CheckoutManagerForm
     success_url = reverse_lazy('manager:index')
+    model = Purchased
+    
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['orders'] = Purchased.objects.all()
-        return context
 
-    def form_valid(self, form):
-        order = form.save(commit=False)
-        order.save()
-        return super().form_valid(form)
+
+
+    
