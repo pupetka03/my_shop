@@ -35,6 +35,16 @@
 
             {%if user.groups.all.0.name == 'manager' %}
             <li class="nav-item"><a href="{% url 'manager:index' %}">Managers</a></li>
+            <li class="nav-item">
+              <div class="user-items ps-5">
+                <ul class="d-flex justify-content-end list-unstyled">
+                  <li class="search-item pe-3">
+                    <a href="{% url 'manager:search_order' %}" class="search-button">
+                      <svg class="search">
+                        <use xlink:href="#search"></use>
+                      </svg>
+                    </a>
+                  </li>
             {% endif %}
             <li class="nav-item">
               <div class="user-items ps-5">

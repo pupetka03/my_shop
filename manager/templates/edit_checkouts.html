@@ -7,7 +7,6 @@
         <form method="post">
             {% csrf_token %}
             {{ form.as_p }}
-            <p class="mb-1">Оброблено: {{ order.processed }}</p>
             <button type="submit" class="btn btn-primary">Зберегти</button>
         </form>
         <a href="{% url 'manager:index' %}" class="btn btn-secondary mt-3">До резервацій</a>

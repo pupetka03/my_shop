@@ -87,3 +87,6 @@ def checkout_view(request):
     }
 
     return render(request, 'checkout.html', context)
+
+
+

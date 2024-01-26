@@ -3,11 +3,16 @@
 {% block content %}
 <main id="main" style="padding-top: 100px;">
 </main>
-<h1>Оброблені замовлення</h1>
-<a href="{% url 'manager:index' %}" class="btn btn-secondary mt-3">Повернутися до резервацій</a>
-<div class="list-group mt-4">
-    {% for order in confirmed_orders %}
-        <div class="list-group-item">
+    <h1>Результати пошуку замовлення</h1>
+    <form method="get" action="{% url 'manager:search_order' %}">
+        {{ form.as_p }}
+        <button type="submit">Пошук</button>
+    </form>
+
+    {% if orders %}
+        <ul>
+            {% for order in orders %}
+            <p class="mb-3">{{ order.order_code }} - Замовлення знайдено</p>
             <p class="mb-1">Ім'я: {{ order.user }}</p>
             <p class="mb-1">Ім'я: {{ order.first_name }}</p>
             <p class="mb-1">Прізвище: {{ order.last_name }}</p>
@@ -26,8 +31,12 @@
         {% else %}
             <p class="text-success">Замовлення оброблено</p>
         {% endif %}
-
-        </div>
-    {% endfor %}
-</div>
+            
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Замовлення не знайдено.</p>
+    {% endif %}
+    <a href="{% url 'manager:confirmed_orders' %}" class="btn btn-secondary mt-3">Переглянути оброблені замовлення</a>
+    <a href="{% url 'manager:index' %}" class="btn btn-secondary mt-3">Переглянути резервації</a>
 {% endblock %}

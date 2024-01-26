@@ -5,6 +5,7 @@
 </main>
 
 <h1>Список резервацій</h1>
+<a href="{% url 'manager:confirmed_orders' %}" class="btn btn-secondary mt-3">Переглянути оброблені замовлення</a>
 <div class="list-group mt-4">
     {% for order in orders %}
         <div class="list-group-item">
@@ -20,11 +21,10 @@
             <p class="mb-1">Код замовлення: {{ order.order_code }}</p>
             <p class="mb-1">Придбані товари: {{ order.products }}</p>
             <p class="mb-1">Оброблено: {{ order.processed }}</p>
-            
+
             {% if not order.processed %}
             <a href="{% url 'manager:edit_checkout' pk=order.id %}" class="btn btn-primary btn-sm float-right">Підтвердити</a>
         {% else %}
-            <!-- Optionally, display a message or redirect link for processed orders -->
             <p class="text-success">Замовлення оброблено</p>
         {% endif %}
 
