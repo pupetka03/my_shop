@@ -31,4 +31,6 @@ class Purchased(models.Model):
     order_code = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
     products = models.TextField()
     
+    def __str__(self):
+        return f'{self.user} - {self.first_name}'
 

@@ -29,10 +29,12 @@ class ManagerIndex(LoginRequiredMixin, ManagerAccessMixin, ListView):
 
 class EditCheckout(LoginRequiredMixin, ManagerAccessMixin, UpdateView):
     template_name = 'edit_checkouts.html'
+    model = Purchased
     login_url = '/login/'
     form_class = CheckoutManagerForm
     success_url = reverse_lazy('manager:index')
-    model = Purchased
+    
+    
     
 
 
