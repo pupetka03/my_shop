@@ -37,7 +37,7 @@ urlpatterns = [
 
     path('', include('orders_app.urls')),
     path('', include('checkout_app.urls')),
-
+    path('', include('account.urls')),
 
 ]
 

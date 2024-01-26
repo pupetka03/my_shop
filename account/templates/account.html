@@ -1,0 +1,42 @@
+{% extends 'index.html' %}
+{% block content %}
+    <main id="main" style="padding-top: 100px;">
+    </main>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>User Account</title>
+    </head>
+    <body>
+
+    <header>
+        <h1>User Account</h1>
+    </header>
+
+    <main>
+        <section>
+            <h2>Welcome, {{ username }}!</h2>
+
+            <p>Your account details:</p>
+            <ul>
+                <li><strong>Username:</strong> {{ username }}</li>
+                <li><strong>Email:</strong> {{ email }}</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Account Actions</h2>
+            <ul>
+                <li><a href="mypurchases">My purchases</a></li>
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+        </section>
+    </main>
+
+    </body>
+    </html>
+
+
+    
+{% endblock %}

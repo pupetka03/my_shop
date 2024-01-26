@@ -4,6 +4,8 @@ from django.views.generic import CreateView
 from django.contrib.auth.views import LoginView
 from django.contrib.auth import logout
 from .forms import UserRegistrationForm, UserLoginForm
+from django.views.generic import TemplateView
+from checkout_app.models import Purchased
 
 def logout_user(request):
     logout(request)
@@ -22,3 +24,23 @@ class LoginUser(LoginView):
 
     def get_success_url(self):
         return self.request.GET.get('next') or self.request.POST.get('next') or '/'
+    
+
+class MyAccountView(TemplateView):
+    template_name = 'account.html'
+    
+    def get(self, request, *args, **kwargs):
+        context = {
+            'username': request.user.username,
+            'email': request.user.email,
+        }
+        return render(request, self.template_name, context)
+    
+
+class MyPurchases(TemplateView):
+    template_name = 'my_purchases.html'
+    
+    def get(self, request):
+        orders = Purchased.objects.filter(user=request.user)
+        context = {'orders': orders}
+        return render(request, self.template_name, context)

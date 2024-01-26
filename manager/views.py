@@ -48,6 +48,8 @@ class ConfirmedOrders(LoginRequiredMixin, ManagerAccessMixin, ListView):
         return Purchased.objects.filter(processed=True)
 
 
+
+
 def search_order(request):
     form = OrderSearchForm(request.GET)
     orders = []

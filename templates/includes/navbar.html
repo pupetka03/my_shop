@@ -39,7 +39,7 @@
               <div class="user-items ps-5">
                 <ul class="d-flex justify-content-end list-unstyled">
                   <li class="search-item pe-3">
-                    <a href="{% url 'manager:search_order' %}" class="search-button">
+                    <a href="{% url 'manager:search_order' %}">
                       <svg class="search">
                         <use xlink:href="#search"></use>
                       </svg>
@@ -56,13 +56,15 @@
                       </svg>
                     </a>
                   </li>
+                  {% if user.is_authenticated %}
                   <li class="pe-3">
-                    <a href="/logout">
+                    <a href="/account">
                       <svg class="user">
                         <use xlink:href="#user"></use>
                       </svg>
                     </a>
                   </li>
+                  {% endif %}
                   <li>
                     <a href="/cart">
                       <svg class="cart">

@@ -1,0 +1,22 @@
+{% extends 'index.html' %}
+{% block content %}
+<main id="main" style="padding-top: 100px;">
+</main>
+<a href="{% url 'account' %}" class="btn btn-secondary mt-3">Повернутися назад</a>
+    {% for order in orders %}
+        <div class="list-group-item">
+            <p class="mb-1">Ім'я: {{ order.user }}</p>
+            <p class="mb-1">Ім'я: {{ order.first_name }}</p>
+            <p class="mb-1">Прізвище: {{ order.last_name }}</p>
+            <p class="mb-1">Електронна пошта: {{ order.email }}</p>
+            <p class="mb-1">Адреса: {{ order.address }}</p>
+            <p class="mb-1">Місто: {{ order.city }}</p>
+            <p class="mb-1">Країна: {{ order.country }}</p>
+            <p class="mb-1">Індекс: {{ order.zip_code }}</p>
+            <p class="mb-1">Телефон: {{ order.telephone }}</p>
+            <p class="mb-1">Код замовлення: {{ order.order_code }}</p>
+            <p class="mb-1">Придбані товари: {{ order.products }}</p>
+            <p class="mb-1">Оброблено: {{ order.processed }}</p>
+        </div>  
+    {% endfor %}
+{% endblock %}
