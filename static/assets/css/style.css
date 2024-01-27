@@ -627,18 +627,16 @@ h3.cart-title {
 .site-header .user-items svg {
     width: 18px;
     height: 18px;
-;
+    cursor: pointer;
 }
 
 @media only screen and (max-width: 991px) {
   #navbar .user-items {
-    display: block;
-    width: 80px;
-    height: 100px;
-    background-color: #f0f0f0;
+    display: none;
   }
-
 }
+
+
 /* 2. Billboard
 /*----------------------------------------------*/
 /*------------Swiper Arrow -----------*/
@@ -686,10 +684,11 @@ h3.cart-title {
     fill: var(--primary-color);
 }
 
-#company-services .icon-box {
-  flex-wrap: wrap;
+@media only screen and (max-width: 991px) {
+  #company-services .icon-box {
+    flex-wrap: wrap;
+  }
 }
-
 
 /* 4. Product
 /*----------------------------------------------*/
