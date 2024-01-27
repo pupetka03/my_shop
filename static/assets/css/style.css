@@ -686,11 +686,10 @@ h3.cart-title {
     fill: var(--primary-color);
 }
 
-@media only screen and (max-width: 991px) {
-  #company-services .icon-box {
-    flex-wrap: wrap;
-  }
+#company-services .icon-box {
+  flex-wrap: wrap;
 }
+
 
 /* 4. Product
 /*----------------------------------------------*/
