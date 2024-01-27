@@ -641,25 +641,25 @@ h3.cart-title {
 /*----------------------------------------------*/
 /*------------Swiper Arrow -----------*/
 #billboard .swiper-arrow {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    z-index: 2;
-    display: flex;
-    align-items: center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
 }
 .swiper-icon.swiper-arrow svg {
-    fill: var(--light-gray-color);
+  fill: var(--light-gray-color);
 }
 .swiper-icon.swiper-arrow:hover svg,
 .swiper-icon.swiper-arrow:focus svg {
-    fill: var(--primary-color);
+  fill: var(--primary-color);
 }
 #billboard .swiper-arrow.swiper-arrow-prev {
-    left: 0;
+  left: 0;
 }
 #billboard .swiper-arrow.swiper-arrow-next {
-    right: 0;
+  right: 0;
 }
 
 @media only screen and (max-width: 767px) {
@@ -693,27 +693,27 @@ h3.cart-title {
 /* 4. Product
 /*----------------------------------------------*/
 .product-store .product-card .cart-concern {
-    bottom: 75px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    cursor: pointer;
-    text-transform: uppercase;
-    transition: all 0.3s ease-out;
-    opacity: 0;
+  bottom: 75px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.3s ease-out;
+  opacity: 0;
 }
 .product-store .product-card:hover .cart-concern {
-    bottom: 90px;
-    opacity: 1;
+  bottom: 90px;
+  opacity: 1;
 }
 .product-card .cart-concern svg {
-    width: 16px;
-    height: 16px;
-    fill: var(--light-color);
-    margin-left: 9px;
+  width: 16px;
+  height: 16px;
+  fill: var(--light-color);
+  margin-left: 9px;
 }
 .product-card .card-detail span {
-    font-size: 1.5em;
+  font-size: 1.5em;
 }
 
 @media only screen and (max-width: 575px) {
@@ -822,6 +822,7 @@ figure.instagram-item img.insta-image {
   }
 }
 
+
 /* 8. Footer
 /*----------------------------------------------*/
 /*------------ Social Icon -----------*/
@@ -894,6 +895,13 @@ figure.instagram-item img.insta-image {
 .sidebar .sidebar-list li a:hover {
     color: var(--primary-color);
 }
+
+@media only screen and (max-width: 991px) {
+  .widget-search-bar form {
+      flex-wrap: wrap;
+  }
+}
+
 
 @media only screen and (max-width: 991px) {
   .widget-search-bar form {
