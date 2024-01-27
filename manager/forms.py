@@ -8,4 +8,4 @@ class CheckoutManagerForm(forms.ModelForm):
 
 
 class OrderSearchForm(forms.Form):
-    order_code = forms.CharField(max_length=50, label='Код замовлення', widget=forms.TextInput(attrs={'placeholder': 'Введіть код замовлення'}))
+    order_code = forms.CharField(max_length=50, label='Order code', widget=forms.TextInput(attrs={'placeholder': 'Enter the order code'}))

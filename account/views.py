@@ -3,6 +3,7 @@ from django.urls import reverse_lazy, reverse
 from django.views.generic import CreateView
 from django.contrib.auth.views import LoginView
 from django.contrib.auth import logout
+from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import UserRegistrationForm, UserLoginForm
 from django.views.generic import TemplateView
 from checkout_app.models import Purchased
@@ -26,7 +27,7 @@ class LoginUser(LoginView):
         return self.request.GET.get('next') or self.request.POST.get('next') or '/'
     
 
-class MyAccountView(TemplateView):
+class MyAccountView(LoginRequiredMixin, TemplateView):
     template_name = 'account.html'
     
     def get(self, request, *args, **kwargs):
@@ -37,7 +38,7 @@ class MyAccountView(TemplateView):
         return render(request, self.template_name, context)
     
 
-class MyPurchases(TemplateView):
+class MyPurchases(LoginRequiredMixin, TemplateView):
     template_name = 'my_purchases.html'
     
     def get(self, request):

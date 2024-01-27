@@ -4,28 +4,28 @@
 <main id="main" style="padding-top: 100px;">
 </main>
 
-<h1>Список резервацій</h1>
-<a href="{% url 'manager:confirmed_orders' %}" class="btn btn-secondary mt-3">Переглянути оброблені замовлення</a>
+<h1>List of orders</h1>
+<a href="{% url 'manager:confirmed_orders' %}" class="btn btn-secondary mt-3">View processed orders</a>
 <div class="list-group mt-4">
     {% for order in orders %}
         <div class="list-group-item">
-            <p class="mb-1">Ім'я: {{ order.user }}</p>
-            <p class="mb-1">Ім'я: {{ order.first_name }}</p>
-            <p class="mb-1">Прізвище: {{ order.last_name }}</p>
-            <p class="mb-1">Електронна пошта: {{ order.email }}</p>
-            <p class="mb-1">Адреса: {{ order.address }}</p>
-            <p class="mb-1">Місто: {{ order.city }}</p>
-            <p class="mb-1">Країна: {{ order.country }}</p>
-            <p class="mb-1">Індекс: {{ order.zip_code }}</p>
-            <p class="mb-1">Телефон: {{ order.telephone }}</p>
-            <p class="mb-1">Код замовлення: {{ order.order_code }}</p>
-            <p class="mb-1">Придбані товари: {{ order.products }}</p>
-            <p class="mb-1">Оброблено: {{ order.processed }}</p>
+            <p class="mb-1">User: {{ order.user }}</p>
+            <p class="mb-1">Name: {{ order.first_name }}</p>
+            <p class="mb-1">Last name: {{ order.last_name }}</p>
+            <p class="mb-1">Email: {{ order.email }}</p>
+            <p class="mb-1">Address: {{ order.address }}</p>
+            <p class="mb-1">City: {{ order.city }}</p>
+            <p class="mb-1">Country: {{ order.country }}</p>
+            <p class="mb-1">Index: {{ order.zip_code }}</p>
+            <p class="mb-1">Phone: {{ order.telephone }}</p>
+            <p class="mb-1">Order code: {{ order.order_code }}</p>
+            <p class="mb-1">Purchased products: {{ order.products }}</p>
+            <p class="mb-1">Processed: {{ order.processed }}</p>
 
             {% if not order.processed %}
-            <a href="{% url 'manager:edit_checkout' pk=order.id %}" class="btn btn-primary btn-sm float-right">Підтвердити</a>
+            <a href="{% url 'manager:edit_checkout' pk=order.id %}" class="btn btn-primary btn-sm float-right">Confirm</a>
         {% else %}
-            <p class="text-success">Замовлення оброблено</p>
+            <p class="text-success">Order processed</p>
         {% endif %}
 
         </div>

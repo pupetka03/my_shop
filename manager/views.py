@@ -60,7 +60,7 @@ def search_order(request):
         try:
             uuid.UUID(order_code, version=4)
         except ValueError:
-            form.add_error('order_code', 'Невірний формат номера замовлення')
+            form.add_error('order_code', 'The order number format is incorrect')
             return render(request, 'search_order.html', {'form': form, 'orders': orders})
 
         orders = Purchased.objects.filter(order_code__endswith=order_code)

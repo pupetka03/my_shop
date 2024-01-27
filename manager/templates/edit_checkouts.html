@@ -3,12 +3,12 @@
 {% block content %}
 <main id="main" style="padding-top: 100px;"></main>
     <div class="container mt-5">
-        <h1>Редагувати бронювання</h1>
+        <h1>Edit order</h1>
         <form method="post">
             {% csrf_token %}
             {{ form.as_p }}
-            <button type="submit" class="btn btn-primary">Зберегти</button>
+            <button type="submit" class="btn btn-primary">Save</button>
         </form>
-        <a href="{% url 'manager:index' %}" class="btn btn-secondary mt-3">До резервацій</a>
+        <a href="{% url 'manager:index' %}" class="btn btn-secondary mt-3">To orders</a>
     </div>
 {% endblock %}
