@@ -1029,3 +1029,77 @@ figure.instagram-item img.insta-image {
     fill: var(--primary-color);
 }
 
+/*kosik */
+
+.cart-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.cart-items {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+.cart-item {
+  display: flex;
+  border-bottom: 1px solid #eee;
+  padding: 10px;
+}
+
+.product-info {
+  flex: 1;
+}
+
+.product-name {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.quantity, .price, .total {
+  display: block;
+  margin-top: 5px;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+}
+
+.remove-button {
+  color: red;
+  margin-left: auto;
+  cursor: pointer;
+}
+
+.product-photo {
+  margin-left: 20px;
+}
+
+.product-photo img {
+  border-radius: 5px;
+}
+
+.total-price {
+  margin-top: 20px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.checkout-button {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-top: 20px;
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.checkout-button:hover {
+  background-color: #0056b3;
+}
