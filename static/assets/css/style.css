@@ -606,33 +606,31 @@ h3.cart-title {
 
 /*------------ Offcanvas -------------- */
 #header-nav .navbar-toggler:focus {
-    box-shadow: none;
+  box-shadow: none;
 }
 #header-nav .offcanvas.show {
-    z-index: 9999;
-    background-color: var(--light-blue-color);
+  z-index: 9999;
+  background-color: var(--light-blue-color);
 }
 #header-nav .offcanvas-end {
-    width: 500px;
+  width: 500px;
 }
 .offcanvas.show .nav-item a.nav-link {
-    font-size: 2em;
+  font-size: 2em;
 }
 .offcanvas.show .offcanvas-body .navbar-nav {
-    align-items: unset!important;
-    padding-left: 20px;
+  align-items: unset!important;
+  padding-left: 20px;
 }
-
 /*------------ Top User Icons -----------*/
 .site-header .user-items svg {
-    width: 18px;
-    height: 18px;
-;
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 991px) {
   #navbar .user-items {
-    display: block;
     width: 90px;
     height: 100px;
     background-color: #f0f0f0;
