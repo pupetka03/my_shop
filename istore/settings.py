@@ -36,7 +36,7 @@ DB_PORT = os.environ.get('DB_PORT')
 DATABASE_URL = os.environ.get('DATABASE_URL')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['django-istore-4417b01c9537.herokuapp.com']
 
