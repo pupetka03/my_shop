@@ -8,6 +8,8 @@ from .forms import UserRegistrationForm, UserLoginForm
 from django.views.generic import TemplateView
 from checkout_app.models import Purchased
 
+
+# User Logout
 def logout_user(request):
     logout(request)
     return redirect('store:home')
@@ -27,6 +29,7 @@ class LoginUser(LoginView):
         return self.request.GET.get('next') or self.request.POST.get('next') or '/'
     
 
+#account
 class MyAccountView(LoginRequiredMixin, TemplateView):
     template_name = 'account.html'
     
@@ -37,7 +40,7 @@ class MyAccountView(LoginRequiredMixin, TemplateView):
         }
         return render(request, self.template_name, context)
     
-
+#account purchases
 class MyPurchases(LoginRequiredMixin, TemplateView):
     template_name = 'my_purchases.html'
     
