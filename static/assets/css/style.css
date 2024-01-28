@@ -632,7 +632,7 @@ h3.cart-title {
 
 @media only screen and (max-width: 991px) {
   #navbar .user-items {
-    display: none;
+    display: block;
   }
 }
 
